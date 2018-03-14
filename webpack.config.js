@@ -1,20 +1,49 @@
+var webpack = require('webpack');
 var path = require('path');
 
-module.exports = {
-    entry: '.home.jsx',
+
+var DIST_DIR = path.resolve(__dirname,"dist");
+var SRC_DIR = path.resolve(__dirname,"src");
+
+var config = {
+    entry: SRC_DIR + "/app/index.js",
     output: {
-        path : path.resolve(),
-        filename: 'transpiled.js'
+        path: DIST_DIR + "/app",
+        filename: "bundle.js",
+        publicPath: "/app/" 
+
     },
     module: {
-        loaders: [ 
-            {
-            test: /\.jsx?$/,
-            loaders: 'babel-loader',
-            exclude:  /node-modules/,
+        loaders: [{
+            test: /\.js?/,
+            include: SRC_DIR,
+            loader: "babel-loeader",
             query: {
-                presets: ['es2015','react']
-            }
-        }]
+            presets: ["react","es2015","stage-2"]
+            } 
+        }
+        ]
     }
-}
+
+};
+
+module.exports = config;
+
+// module.exports = {
+//     entry: '.home.jsx',
+//     output: {
+//         path : 
+//         filename: 'transpiled.js'
+//     },
+//     module: {
+//         loaders: [ 
+//             {
+//             test: /\.jsx?$/,
+//             loaders: 'babel-loader',
+//             exclude:  /node-modules/,
+//             query: {
+//                 presets: ['es2015','react']
+//             }
+//         }]
+//     }
+// }
