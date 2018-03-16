@@ -1,0 +1,28 @@
+<div class="col-md-12">
+  <!-- <div class="col-md-12">
+      <input ng-model="username"  placeholder="Nome"/>
+  </div>
+
+  <div class="col-md-12">
+      <input ng-model="cpf"  placeholder="CPF"/>
+  </div>
+
+  <div class="col-md-12 dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">HTML</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">JavaScript</a></li>
+    </ul>
+  </div>
+  <div class="col-md-12">
+   <input value="cadastrar" type="button" class="button" (click)="siginUser()" />
+  </div> --> 
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <input placeholder="nome" name="name" ngModel required #first="ngModel">
+    <input placeholder="CPF" name="cpf" ngModel>
+    <button>Submit</button>
+  </form>
+</div>
+

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Parse } from 'parse'
 import {NgForm} from '@angular/forms';
 
@@ -26,13 +26,17 @@ Parse.serverURL = 'http://18.218.121.97:80/parse/';
 // });
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-checkin',
+  templateUrl: './checkin.component.html',
+  styleUrls: ['./checkin.component.css']
 })
-export class AppComponent {
-  title = 'app';
- 
+export class CheckinComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
   onSubmit(f: NgForm) {
     //cadastrar user
 
@@ -56,6 +60,5 @@ export class AppComponent {
       });
     }
   }
-
-
+  
 }
