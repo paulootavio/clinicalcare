@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import {Parse } from 'parse'
 import {NgForm} from '@angular/forms';
+import { ChatService } from './chat.service';
 
 
 
-Parse.initialize("40d7477c682e711c8ff6846490633699ad3423f5");
-Parse.serverURL = 'http://18.218.121.97:80/parse/';
 
 // var GameScore = Parse.Object.extend("User");
 // var query = new Parse.Query(GameScore);
@@ -27,12 +26,27 @@ Parse.serverURL = 'http://18.218.121.97:80/parse/';
 
 @Component({
   selector: 'app-root',
+
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [ChatService]
 })
 export class AppComponent {
   title = 'app';
  
+  constructor(private chat: ChatService){ }
+  msg : string;
+
+  ngOnInit() {
+    this.chat.messages.subscribe(msg => {
+      console.log(msg);
+    })
+  
+  }
+  sendMessage() {
+    this.chat.sendMsg("Test Message");
+  }
+
   onSubmit(f: NgForm) {
     //cadastrar user
 

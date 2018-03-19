@@ -5,10 +5,9 @@ import { AppComponent } from './app.component';
 import { TrackingComponent } from './tracking/tracking.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CheckinComponent } from './checkin/checkin.component';
+import {WebsocketService } from './websocket.service';
+import {ChatService} from './chat.service';
 
-import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
-
-const config: SocketIoConfig = { url: 'http://localhost:4200', options: {} };
 
 // ROUTES
 const appRoutes: Routes = [
@@ -35,10 +34,12 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-    ),
-    SocketIoModule.forRoot(config) 
+    )
   ],
-  providers: [],
+  providers: [
+    ChatService,
+    WebsocketService
+  ],
   bootstrap: [AppComponent]
 
 })
