@@ -25,3 +25,10 @@ io.on('connection', (socket) => {
 http.listen(5000, () => {
     console.log('started on port 5000');
 });
+
+app.get('/', function (req, res) {
+    res.send('Hello World!');
+ });
+app.listen(9002, function () {
+    console.log('Example app listening on port 9002!');
+});
